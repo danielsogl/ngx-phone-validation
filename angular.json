@@ -121,6 +121,41 @@
           }
         }
       }
+    },
+    "ngx-phone-validation": {
+      "root": "projects/ngx-phone-validation",
+      "sourceRoot": "projects/ngx-phone-validation/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-phone-validation/tsconfig.lib.json",
+            "project": "projects/ngx-phone-validation/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-phone-validation/src/test.ts",
+            "tsConfig": "projects/ngx-phone-validation/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-phone-validation/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-phone-validation/tsconfig.lib.json",
+              "projects/ngx-phone-validation/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ngx-phone-validation-app"

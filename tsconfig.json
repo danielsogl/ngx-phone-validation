@@ -16,6 +16,16 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-phone-validation": [
+        "dist/ngx-phone-validation",
+        "dist/ngx-phone-validation"
+      ],
+      "ngx-phone-validation/*": [
+        "dist/ngx-phone-validation/*",
+        "dist/ngx-phone-validation/*"
+      ]
+    }
   }
 }
