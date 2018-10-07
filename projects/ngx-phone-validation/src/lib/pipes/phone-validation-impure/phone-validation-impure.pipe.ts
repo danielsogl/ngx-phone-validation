@@ -1,24 +1,17 @@
 import { Pipe, PipeTransform } from '@angular/core';
-
-import { PhoneValidationService } from '../../services/phone-validation/phone-validation.service';
+import { CountryCode, parseNumber } from 'libphonenumber-js';
 
 @Pipe({
   name: 'phoneValidationImpure',
   pure: false
 })
 export class PhoneValidationImpurePipe implements PipeTransform {
-  constructor(private phoneValidationService: PhoneValidationService) {}
-
-  transform(number: string, countryCode?: string): boolean {
+  transform(number: string, countryCode?: CountryCode): boolean {
     if (number) {
-      this.phoneValidationService
-        .checkPhoneNumber(number, countryCode)
-        .then(result => {
-          return result.data.valid;
-        })
-        .catch(err => {
-          return null;
-        });
+      if (countryCode) {
+        return parseNumber(number, countryCode).valid;
+      }
+      return parseNumber(number).valid;
     }
     return null;
   }
